@@ -7,7 +7,7 @@ public class PigLatin {
 		
 		userString = JOptionPane.showInputDialog("Enter a sentence or word to translate: ");
 		
-		String[] words = userString.split(" ");
+		String[] words = userString.split("\\s");
 		for(int i = 0; i < words.length; i++) {
 			translation += pigLatinTranslation(words[i]);
 		}
@@ -24,7 +24,8 @@ public class PigLatin {
 		
 		if(isVowel(temp[0])) {
 			return sentence += "-ay ";
-		}		
+		}
+		
 		else {
 			
 			String strTemp = "";
@@ -35,7 +36,11 @@ public class PigLatin {
 				if(!isVowel(temp[i])) {
 					strTemp += temp[i];
 					index++;
+					if(i == temp.length - 2) {
+						break;
+					}
 				}
+				
 				else {
 					break;
 				}
